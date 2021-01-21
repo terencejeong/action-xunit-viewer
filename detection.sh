@@ -14,10 +14,9 @@ find_fail(){
     target=$1
     file=$2
     suite_line=$(cat "$file" | grep "$target")
+    echo "Hello there from Terry"
     if echo "$suite_line" | grep "failures=\"0\"";then
         return 0
-    elif echo "$suite_line" | grep "errors=\"0\"";then
-        return 0  
     else
         echo "Failure found in $file: $suite_line"
         return 1
