@@ -16,16 +16,12 @@ find_fail(){
     suite_line=$(cat "$file" | grep "$target")
     if echo "$suite_line" | grep "failures=\"0\"";then
         return 0
-    else
-        echo "Failure found in $file: $suite_line"
-        return 1
-    fi
-    if echo "$suite_line" | grep -L "errors=\"0\"";then
+    elif echo "$suite_line" | grep -L "errors=\"0\"";then
         return 0
     else
         echo "Failure found in $file: $suite_line"
         return 1
-    fi    
+    fi
 }
 suite_success(){
     file="$1"
